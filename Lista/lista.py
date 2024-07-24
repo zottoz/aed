@@ -11,6 +11,16 @@ class Lista:
             novoNo.proximo = self.inicio
             self.inicio = novoNo
         self.tam = self.tam + 1
+
+    def adicionaFim(self, valor):
+        if(self.tam == 0):
+            self.adiciona(valor)
+        else:
+            atual = self.inicio
+            while(atual.proximo):
+                atual = atual.proximo
+            atual.proximo = No(valor)
+            self.tam = self.tam + 1
         
     def imprimir(self):
         if(self.inicio):
@@ -32,6 +42,7 @@ class Lista:
             temp = self.inicio
             self.inicio = self.inicio.proximo
             temp = None
+            self.tam = self.tam - 1
 
     def removeFim(self):
         atual = self.inicio
@@ -45,7 +56,8 @@ class Lista:
                 anterior = atual
                 atual = atual.proximo
             anterior.proximo = None        
-
+        self.tam = self.tam - 1
+        
     def removeValor(self, valor):
         if(self.inicio.dados == valor):
             aux = self.inicio
